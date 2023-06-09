@@ -1,0 +1,336 @@
+---
+title: "Data"
+author: "Emma SIms"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("devtools")) install.packages("devtools")
+if (!require("remotes")) install.packages("remotes")
+if (!require("janitor")) install.packages("janitor")
+if (!require("lm.beta")) install.packages("lm.beta")
+if (!require("matrixStats")) install.packages("matrixStats")
+if (!require("tictoc")) install.packages("tictoc")
+if (!require("glue")) install.packages("glue")
+if (!require("psych")) install.packages("psych")
+if (!require("foreign")) install.packages("foreign")
+if(!require("ggplot2")) install.packages("ggplot2")
+if(!require("parameters")) install.packages("parameters")
+if(!require("gt")) install.packages("gt")
+
+library("gt")
+
+#import
+
+library(readxl)
+Spring_Con_EAP <- read_excel("NH's data.xlsx",     sheet = "Spring Con EAP")
+View(Spring_Con_EAP)
+
+library(readxl)
+Fall_Con_VBC <- read_excel("NH's data.xlsx", 
+    sheet = "Fall Con VBC")
+View(Fall_Con_VBC)
+
+library(readxl)
+Fall_Con_AntiCoag <- read_excel("NH's data.xlsx", 
+    sheet = "Fall Con AntiCoag")
+View(Fall_Con_AntiCoag)
+
+library(readxl)
+Fall_Con_ADHD <- read_excel("NH's data.xlsx", 
+    sheet = "Fall Con ADHD")
+View(Fall_Con_ADHD)
+
+library(readxl)
+Ratings <- read_excel("NH's data.xlsx", 
+    sheet = "Ratings")
+View(Ratings)
+
+library(readxl)
+Fall_Con_OM <- read_excel("NH's data.xlsx", 
+     sheet = "Fall Con OM")
+View(Fall_Con_OM)
+
+library(readxl)
+Fall_Con_Prac_Sus <- read_excel("NH's data.xlsx", 
+     sheet = "Fall Con Prac Sus")
+View(Fall_Con_Prac_Sus)
+
+library(readxl)
+Fall_Con_EAP <- read_excel("NH's data.xlsx", 
+     sheet = "Fall Con EAP")
+View(Fall_Con_EAP)
+
+library(readxl)
+Spring_Con_VBC <- read_excel("NH's data.xlsx",      sheet = "Spring Con VBC")
+View(Spring_Con_VBC)
+
+library(readxl)
+Spring_Con_AntiCoag <- read_excel("NH's data.xlsx",      sheet = "Spring Con AntiCoag")
+View(Spring_Con_AntiCoag)
+
+library(readxl)
+Spring_Con_ADHD <- read_excel("NH's data.xlsx",      sheet = "Spring Con ADHD")
+View(Spring_Con_ADHD)
+
+library(readxl)
+Spring_Con_Obesity_M <- read_excel("NH's data.xlsx",      sheet = "Spring Con Obesity M")
+View(Spring_Con_Obesity_M)
+
+library(readxl)
+Spring_Con_Prac_Sus <- read_excel("NH's data.xlsx",      sheet = "Spring Con Prac Sus")
+View(Spring_Con_Prac_Sus)
+
+library(readxl)
+Fall_Prof_EAP <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency EAP")
+View(Fall_Prof_EAP)
+
+library(readxl)
+Fall_Prof_Prac_Sus <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency Prac Sus")
+View(Fall_Prof_Prac_Sus)
+
+library(readxl)
+Fall_Prof_ADHD <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency ADHD")
+View(Fall_Prof_ADHD)
+
+library(readxl)
+Fall_Prof_Obesity_M <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency Obesity M")
+View(Fall_Prof_Obesity_M)
+
+library(readxl)
+Fall_Prof_AntiCo_Saf <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency Anticoag")
+View(Fall_Prof_AntiCo_Saf)
+
+library(readxl)
+Fall_Prof_VBC <- read_excel("NH's data.xlsx",      sheet = "Fall Proficiency Value Based")
+View(Fall_Prof_VBC)
+
+library(readxl)
+Spring_Prof_EAP <- read_excel("NH's data.xlsx",      sheet = "Spring EAP")
+View(Spring_Prof_EAP)
+
+library(readxl)
+Spring_Prof_Prac_Sus <- read_excel("NH's data.xlsx",      sheet = "Spring PracSus")
+View(Spring_Prof_Prac_Sus)
+
+library(readxl)
+Spring_Prof_Obesity_Man <- read_excel("NH's data.xlsx",      sheet = "Spring Obesity M")
+View(Spring_Prof_Obesity_Man)
+
+library(readxl)
+Spring_Prof_ADHD <- read_excel("NH's data.xlsx",      sheet = "Spring ADHD")
+View(Spring_Prof_ADHD)
+
+library(readxl)
+Spring_Prof_AntiCoag <- read_excel("NH's data.xlsx",      sheet = "Spring Anticoag")
+View(Spring_Prof_AntiCoag)
+
+library(readxl)
+Spring_Prof_VBC <- read_excel("NH's data.xlsx",      sheet = "Spring VBC")
+View(Spring_Prof_VBC)
+
+library(readxl)
+Total <- read_excel("NH's data.xlsx",      sheet = "Total")
+View(Total)
+
+library(readxl)
+Con_Total <- read_excel("NH's data.xlsx",      sheet = "Con Total")
+View(Con_Total)
+
+library(readxl)
+Prof_Total <- read_excel("NH's data.xlsx",      sheet = "Prof Total")
+View(Prof_Total)
+
+library(readxl)
+Spring_Total <- read_excel("NH's data.xlsx",      sheet = "Spring Total")
+View(Spring_Total)
+
+library(readxl)
+Fall_Total <- read_excel("NH's data.xlsx",      sheet = "Fall Total")
+View(Fall_Total)
+
+```
+
+
+```{r set, include=FALSE}
+
+Spring_Con_EAP_Before <- Spring_Con_EAP %>% select(Before)
+Spring_Con_EAP_After <- Spring_Con_EAP %>% select(After)
+
+Spring_Con_EAP_T <- t.test(Spring_Con_EAP_Before, Spring_Con_EAP_After, var.equal = TRUE)
+Spring_Con_EAP_T
+
+Fall_Con_VBC_Before <- Fall_Con_VBC %>% select(Before)
+Fall_Con_VBC_After <- Fall_Con_VBC %>% select(After)
+
+Fall_Con_VBC_T <- t.test(Fall_Con_VBC_Before, Fall_Con_VBC_After, var.equal = TRUE)
+Fall_Con_VBC_T
+
+Fall_Con_AntiCoag_Before <- Fall_Con_AntiCoag %>% select(Before)
+Fall_Con_AntiCoag_After <- Fall_Con_AntiCoag %>% select(After)
+
+Fall_Con_AntiCoag_T <- t.test(Fall_Con_AntiCoag_Before, Fall_Con_AntiCoag_After, var.equal = TRUE)
+Fall_Con_AntiCoag_T
+
+Fall_Con_ADHD_Before <- Fall_Con_ADHD %>% select(Before)
+Fall_Con_ADHD_After <- Fall_Con_ADHD %>% select(After)
+
+Fall_Con_ADHD_T <- t.test(Fall_Con_ADHD_Before, Fall_Con_ADHD_After, var.equal = TRUE)
+Fall_Con_ADHD_T
+
+Fall_Con_OM_Before <- Fall_Con_OM %>% select(Before)
+Fall_Con_OM_After <- Fall_Con_OM %>% select(After)
+
+Fall_Con_OM_T <- t.test(Fall_Con_OM_Before, Fall_Con_OM_After, var.equal = TRUE)
+Fall_Con_OM_T
+
+Fall_Con_Prac_Sus_Before <- Fall_Con_Prac_Sus %>% select(Before)
+Fall_Con_Prac_Sus_After <- Fall_Con_Prac_Sus %>% select(After)
+
+Fall_Con_Prac_Sus_T <- t.test(Fall_Con_Prac_Sus_Before, Fall_Con_Prac_Sus_After, var.equal = TRUE)
+Fall_Con_Prac_Sus_T
+
+Fall_Con_EAP_Before <- Fall_Con_EAP %>% select(Before)
+Fall_Con_EAP_After <- Fall_Con_EAP %>% select(After)
+
+Fall_Con_EAP_T <- t.test(Fall_Con_EAP_Before, Fall_Con_EAP_After, var.equal = TRUE)
+Fall_Con_EAP_T
+
+Spring_Con_VBC_Before <- Spring_Con_VBC %>% select(Before)
+Spring_Con_VBC_After <- Spring_Con_VBC %>% select(After)
+
+Spring_Con_VBC_T <- t.test(Spring_Con_VBC_Before, Spring_Con_VBC_After, var.equal = TRUE)
+Spring_Con_VBC_T
+
+Spring_Con_AntiCoag_Before <- Spring_Con_AntiCoag %>% select(Before)
+Spring_Con_AntiCoag_After <- Spring_Con_AntiCoag %>% select(After)
+
+Spring_Con_AntiCoag_T <- t.test(Spring_Con_AntiCoag_Before, Spring_Con_AntiCoag_After, var.equal = TRUE)
+Spring_Con_AntiCoag_T
+
+Spring_Con_ADHD_Before <- Spring_Con_ADHD %>% select(Before)
+Spring_Con_ADHD_After <- Spring_Con_ADHD %>% select(After)
+
+Spring_Con_ADHD_T <- t.test(Spring_Con_ADHD_Before, Spring_Con_ADHD_After, var.equal = TRUE)
+Spring_Con_ADHD_T
+
+Spring_Con_Prac_Sus_Before <- Spring_Con_Prac_Sus %>% select(Before)
+Spring_Con_Prac_Sus_After <- Spring_Con_Prac_Sus %>% select(After)
+
+Spring_Con_Prac_Sus_T <- t.test(Spring_Con_Prac_Sus_Before, Spring_Con_Prac_Sus_After, var.equal = TRUE)
+Spring_Con_Prac_Sus_T
+
+Spring_Prof_VBC_Before <- Spring_Prof_VBC %>% select(Before)
+Spring_Prof_VBC_After <- Spring_Prof_VBC %>% select(After)
+
+Spring_Prof_VBC_T <- t.test(Spring_Prof_VBC_Before, Spring_Prof_VBC_After, var.equal = TRUE)
+Spring_Prof_VBC_T
+
+Spring_Prof_AntiCoag_Before <- Spring_Prof_AntiCoag %>% select(Before)
+Spring_Prof_AntiCoag_After <- Spring_Prof_AntiCoag %>% select(After)
+
+Spring_Prof_AntiCoag_T <- t.test(Spring_Prof_AntiCoag_Before, Spring_Prof_AntiCoag_After, var.equal = TRUE)
+Spring_Prof_AntiCoag_T
+
+Spring_Prof_ADHD_Before <- Spring_Prof_ADHD %>% select(Before)
+Spring_Prof_ADHD_After <- Spring_Prof_ADHD %>% select(After)
+
+Spring_Prof_ADHD_T <- t.test(Spring_Prof_ADHD_Before, Spring_Prof_ADHD_After, var.equal = TRUE)
+Spring_Prof_ADHD_T
+
+Spring_Prof_Prac_Sus_Before <- Spring_Prof_Prac_Sus %>% select(Before)
+Spring_Prof_Prac_Sus_After <- Spring_Prof_Prac_Sus %>% select(After)
+
+Spring_Prof_Prac_Sus_T <- t.test(Spring_Prof_Prac_Sus_Before, Spring_Prof_Prac_Sus_After, var.equal = TRUE)
+Spring_Prof_Prac_Sus_T
+
+Spring_Prof_EAP_Before <- Spring_Prof_EAP %>% select(Before)
+Spring_Prof_EAP_After <- Spring_Prof_EAP %>% select(After)
+
+Spring_Prof_EAP_T <- t.test(Spring_Prof_EAP_Before, Spring_Prof_EAP_After, var.equal = TRUE)
+Spring_Prof_EAP_T
+
+Fall_Prof_VBC_Before <- Fall_Prof_VBC %>% select(Before)
+Fall_Prof_VBC_After <- Fall_Prof_VBC %>% select(After)
+
+Fall_Prof_VBC_T <- t.test(Fall_Prof_VBC_Before, Fall_Prof_VBC_After, var.equal = TRUE)
+Fall_Prof_VBC_T
+
+Fall_Prof_AntiCo_Saf_Before <- Fall_Prof_AntiCo_Saf %>% select(Before)
+Fall_Prof_AntiCo_Saf_After <- Fall_Prof_AntiCo_Saf %>% select(After)
+
+Fall_Prof_AntiCo_Saf_T <- t.test(Fall_Prof_AntiCo_Saf_Before, Fall_Prof_AntiCo_Saf_After, var.equal = TRUE)
+Fall_Prof_AntiCo_Saf_T
+
+Fall_Prof_ADHD_Before <- Fall_Prof_ADHD %>% select(Before)
+Fall_Prof_ADHD_After <- Fall_Prof_ADHD %>% select(After)
+
+Fall_Prof_ADHD_T <- t.test(Fall_Prof_ADHD_Before, Fall_Prof_ADHD_After, var.equal = TRUE)
+Fall_Prof_ADHD_T
+
+Fall_Prof_Prac_Sus_Before <- Fall_Prof_Prac_Sus %>% select(Before)
+Fall_Prof_Prac_Sus_After <- Fall_Prof_Prac_Sus %>% select(After)
+
+Fall_Prof_Prac_Sus_T <- t.test(Fall_Prof_Prac_Sus_Before, Fall_Prof_Prac_Sus_After, var.equal = TRUE)
+Fall_Prof_Prac_Sus_T
+
+Fall_Prof_EAP_Before <- Fall_Prof_EAP %>% select(Before)
+Fall_Prof_EAP_After <- Fall_Prof_EAP %>% select(After)
+
+Fall_Prof_EAP_T <- t.test(Fall_Prof_EAP_Before, Fall_Prof_EAP_After, var.equal = TRUE)
+Fall_Prof_EAP_T
+
+Fall_Prof_Obesity_M_Before <- Fall_Prof_Obesity_M %>% select(Before)
+Fall_Prof_Obesity_M_After <- Fall_Prof_Obesity_M %>% select(After)
+
+Fall_Prof_Obesity_M_T <- t.test(Fall_Prof_Obesity_M_Before, Fall_Prof_Obesity_M_After, var.equal = TRUE)
+Fall_Prof_Obesity_M_T
+
+Spring_Prof_Obesity_Man_Before <- Spring_Prof_Obesity_Man %>% select(Before)
+Spring_Prof_Obesity_Man_After <- Spring_Prof_Obesity_Man %>% select(After)
+
+Spring_Prof_Obesity_Man_T <- t.test(Spring_Prof_Obesity_Man_Before, Spring_Prof_Obesity_Man_After, var.equal = TRUE)
+Spring_Prof_Obesity_Man_T
+
+Con_Total_Before <- Con_Total %>% select(Before)
+Con_Total_After<- Con_Total %>% select(After)
+
+Con_Total_T <- t.test(Con_Total_Before, Con_Total_After, var.equal = TRUE)
+Con_Total_T
+
+Prof_Total_Before <- Prof_Total %>% select(Before)
+Prof_Total_After<- Prof_Total %>% select(After)
+
+Prof_Total_T <- t.test(Prof_Total_Before, Prof_Total_After, var.equal = TRUE)
+Prof_Total_T
+
+Spring_Total_Before <- Spring_Total %>% select(Before)
+Spring_Total_After<- Spring_Total %>% select(After)
+
+Spring_Total_T <- t.test(Spring_Total_Before, Spring_Total_After, var.equal = TRUE)
+Spring_Total_T
+
+Fall_Total_Before <- Fall_Total %>% select(Before)
+Fall_Total_After<- Fall_Total %>% select(After)
+
+Fall_Total_T <- t.test(Fall_Total_Before, Fall_Total_After, var.equal = TRUE)
+Fall_Total_T
+
+Total_Before <- Total %>% select(Before)
+Total_After<- Total %>% select(After)
+
+Total_T <- t.test(Total_Before, Total_After, var.equal = TRUE)
+Total_T
+
+#notsig
+
+Spring_Con_Obesity_M_Before <- Spring_Con_Obesity_M %>% select(Before)
+Spring_Con_Obesity_M_After <- Spring_Con_Obesity_M %>% select(After)
+
+Spring_Con_Obesity_M_T <- t.test(Spring_Con_Obesity_M_Before, Spring_Con_Obesity_M_After, var.equal = TRUE)
+Spring_Con_Obesity_M_T
+#notsig
+
+```
