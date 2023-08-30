@@ -25,7 +25,7 @@ library("gt")
 #import
 
 library(readxl)
-Spring_Con_EAP <- read_excel("NH's data.xlsx",     sheet = "Spring Con EAP")
+Spring_Con_EAP <- read_excel("NH's data.xlsx",     sheet = "Spring Con CGI")
 View(Spring_Con_EAP)
 
 library(readxl)
