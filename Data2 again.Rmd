@@ -1,0 +1,381 @@
+---
+title: "Data"
+author: "Emma SIms"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("devtools")) install.packages("devtools")
+if (!require("remotes")) install.packages("remotes")
+if (!require("janitor")) install.packages("janitor")
+if (!require("lm.beta")) install.packages("lm.beta")
+if (!require("matrixStats")) install.packages("matrixStats")
+if (!require("tictoc")) install.packages("tictoc")
+if (!require("glue")) install.packages("glue")
+if (!require("psych")) install.packages("psych")
+if (!require("foreign")) install.packages("foreign")
+if(!require("ggplot2")) install.packages("ggplot2")
+if(!require("parameters")) install.packages("parameters")
+if(!require("gt")) install.packages("gt")
+
+library("gt")
+
+#import
+
+library(readxl)
+Spring_Con_CGI <- read_excel("NH's data 2023.xlsx",     sheet = "Spring Con CGI")
+View(Spring_Con_CGI)
+
+library(readxl)
+Spring_Prof_CGI <- read_excel("NH's data 2023.xlsx", 
+    sheet = "Spring Prof CGI")
+View(Spring_Prof_CGI)
+
+library(readxl)
+Winter_Con_CGI <- read_excel("NH's data 2023.xlsx", 
+    sheet = "Winter Con CGI")
+View(Winter_Con_CGI)
+
+library(readxl)
+Winter_Prof_CGI <- read_excel("NH's data 2023.xlsx", 
+    sheet = "Winter Prof CGI")
+View(Winter_Prof_CGI)
+
+library(readxl)
+Ratings <- read_excel("NH's data 2023.xlsx", 
+    sheet = "Ratings")
+View(Ratings)
+
+library(readxl)
+Spring_Con_Peds <- read_excel("NH's data 2023.xlsx", 
+     sheet = "Spring Con Peds")
+View(Spring_Con_Peds)
+
+library(readxl)
+Spring_Prof_Peds <- read_excel("NH's data 2023.xlsx", 
+     sheet = "Spring Prof Peds")
+View(Spring_Prof_Peds)
+
+library(readxl)
+Winter_Con_Peds <- read_excel("NH's data 2023.xlsx", 
+     sheet = "Winter Con Peds")
+View(Winter_Con_Peds)
+
+library(readxl)
+Winter_Prof_Peds <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Prof Peds")
+View(Winter_Prof_Peds)
+
+library(readxl)
+Spring_Con_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Con OBE")
+View(Spring_Con_OBE)
+
+library(readxl)
+Spring_Prof_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Prof OBE")
+View(Spring_Prof_OBE)
+
+library(readxl)
+Winter_Con_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Con OBE")
+View(Winter_Con_OBE)
+
+library(readxl)
+Winter_Prof_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Prof OBE")
+View(Winter_Prof_OBE)
+
+library(readxl)
+Spring_Con_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Con Risk")
+View(Spring_Con_Risk)
+
+library(readxl)
+Spring_Prof_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Prof Risk")
+View(Spring_Prof_Risk)
+
+library(readxl)
+Winter_Con_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Con Risk")
+View(Winter_Con_Risk)
+
+library(readxl)
+Winter_Prof_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Prof Risk")
+View(Winter_Prof_Risk)
+
+library(readxl)
+Spring_Con_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Con Anti")
+View(Spring_Con_Anti)
+
+library(readxl)
+Spring_Prof_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Prof Anti")
+View(Spring_Prof_Anti)
+
+library(readxl)
+Winter_Con_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Con Anti")
+View(Winter_Con_Anti)
+
+library(readxl)
+Winter_Prof_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Prof Anti")
+View(Winter_Prof_Anti)
+
+library(readxl)
+Spring_CGI <- read_excel("NH's data 2023.xlsx",      sheet = "Spring CGI")
+View(Spring_CGI)
+
+library(readxl)
+Winter_CGI <- read_excel("NH's data 2023.xlsx",      sheet = "Winter CGI")
+View(Winter_CGI)
+
+library(readxl)
+Spring_Peds <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Peds")
+View(Spring_Peds)
+
+library(readxl)
+Winter_Peds <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Peds")
+View(Winter_Peds)
+
+library(readxl)
+Spring_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Spring OBE")
+View(Spring_OBE)
+
+library(readxl)
+Winter_OBE <- read_excel("NH's data 2023.xlsx",      sheet = "Winter OBE")
+View(Winter_OBE)
+
+library(readxl)
+Spring_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Risk")
+View(Spring_Risk)
+
+library(readxl)
+Winter_Risk <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Risk")
+View(Winter_Risk)
+
+library(readxl)
+Winter_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Anti")
+View(Winter_Anti)
+
+library(readxl)
+Spring_Anti <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Anti")
+View(Spring_Anti)
+
+library(readxl)
+Total <- read_excel("NH's data 2023.xlsx",      sheet = "Total")
+View(Total)
+
+library(readxl)
+Con_Total <- read_excel("NH's data 2023.xlsx",      sheet = "Con Total")
+View(Con_Total)
+
+library(readxl)
+Prof_Total <- read_excel("NH's data 2023.xlsx",      sheet = "Prof Total")
+View(Prof_Total)
+
+library(readxl)
+Spring_Total <- read_excel("NH's data 2023.xlsx",      sheet = "Spring Total")
+View(Spring_Total)
+
+library(readxl)
+Winter_Total <- read_excel("NH's data 2023.xlsx",      sheet = "Winter Total")
+View(Winter_Total)
+
+```
+
+
+```{r set, include=FALSE}
+
+Spring_Con_CGI_Before <- Spring_Con_CGI %>% select(Before)
+Spring_Con_CGI_After <- Spring_Con_CGI %>% select(After)
+
+Spring_Con_CGI_T <- t.test(Spring_Con_CGI_Before, Spring_Con_CGI_After, var.equal = TRUE)
+Spring_Con_CGI_T
+
+Spring_Prof_CGI_Before <- Spring_Prof_CGI %>% select(Before)
+Spring_Prof_CGI_After <- Spring_Prof_CGI %>% select(After)
+
+Spring_Prof_CGI_T <- t.test(Spring_Prof_CGI_Before, Spring_Prof_CGI_After, var.equal = TRUE)
+Spring_Prof_CGI_T
+
+Winter_Con_CGI_Before <- Winter_Con_CGI %>% select(Before)
+Winter_Con_CGI_After <- Winter_Con_CGI %>% select(After)
+
+Winter_Con_CGI_T <- t.test(Winter_Con_CGI_Before, Winter_Con_CGI_After, var.equal = TRUE)
+Winter_Con_CGI_T
+
+Winter_Prof_CGI_Before <- Winter_Prof_CGI %>% select(Before)
+Winter_Prof_CGI_After <- Winter_Prof_CGI %>% select(After)
+
+Winter_Prof_CGI_T <- t.test(Winter_Prof_CGI_Before, Winter_Prof_CGI_After, var.equal = TRUE)
+Winter_Prof_CGI_T
+
+Spring_Con_Peds_Before <- Spring_Con_Peds %>% select(Before)
+Spring_Con_Peds_After <- Spring_Con_Peds %>% select(After)
+
+Spring_Con_Peds_T <- t.test(Spring_Con_Peds_Before, Spring_Con_Peds_After, var.equal = TRUE)
+Spring_Con_Peds_T
+
+Spring_Prof_Peds_Before <- Spring_Prof_Peds %>% select(Before)
+Spring_Prof_Peds_After <- Spring_Prof_Peds %>% select(After)
+
+Spring_Prof_Peds_T <- t.test(Spring_Prof_Peds_Before, Spring_Prof_Peds_After, var.equal = TRUE)
+Spring_Prof_Peds_T
+
+Winter_Prof_Peds_Before <- Winter_Prof_Peds %>% select(Before)
+Winter_Prof_Peds_After <- Winter_Prof_Peds %>% select(After)
+
+Winter_Prof_Peds_T <- t.test(Winter_Prof_Peds_Before, Winter_Prof_Peds_After, var.equal = TRUE)
+Winter_Prof_Peds_T
+
+Spring_Con_OBE_Before <- Spring_Con_OBE %>% select(Before)
+Spring_Con_OBE_After <- Spring_Con_OBE %>% select(After)
+
+Spring_Con_OBE_T <- t.test(Spring_Con_OBE_Before, Spring_Con_OBE_After, var.equal = TRUE)
+Spring_Con_OBE_T
+
+Spring_Prof_OBE_Before <- Spring_Prof_OBE %>% select(Before)
+Spring_Prof_OBE_After <- Spring_Prof_OBE %>% select(After)
+
+Spring_Prof_OBE_T <- t.test(Spring_Prof_OBE_Before, Spring_Prof_OBE_After, var.equal = TRUE)
+Spring_Prof_OBE_T
+
+Winter_Con_OBE_Before <- Winter_Con_OBE %>% select(Before)
+Winter_Con_OBE_After <- Winter_Con_OBE %>% select(After)
+
+Winter_Con_OBE_T <- t.test(Winter_Con_OBE_Before, Winter_Con_OBE_After, var.equal = TRUE)
+Winter_Con_OBE_T
+
+Winter_Prof_OBE_Before <- Winter_Prof_OBE %>% select(Before)
+Winter_Prof_OBE_After <- Winter_Prof_OBE %>% select(After)
+
+Winter_Prof_OBE_T <- t.test(Winter_Prof_OBE_Before, Winter_Prof_OBE_After, var.equal = TRUE)
+Winter_Prof_OBE_T
+
+Spring_Con_Risk_Before <- Spring_Con_Risk %>% select(Before)
+Spring_Con_Risk_After <- Spring_Con_Risk %>% select(After)
+
+Spring_Con_Risk_T <- t.test(Spring_Con_Risk_Before, Spring_Con_Risk_After, var.equal = TRUE)
+Spring_Con_Risk_T
+
+Spring_Prof_Risk_Before <- Spring_Prof_Risk %>% select(Before)
+Spring_Prof_Risk_After <- Spring_Prof_Risk %>% select(After)
+
+Spring_Prof_Risk_T <- t.test(Spring_Prof_Risk_Before, Spring_Prof_Risk_After, var.equal = TRUE)
+Spring_Prof_Risk_T
+
+Winter_Con_Risk_Before <- Winter_Con_Risk %>% select(Before)
+Winter_Con_Risk_After <- Winter_Con_Risk %>% select(After)
+
+Winter_Con_Risk_T <- t.test(Winter_Con_Risk_Before, Winter_Con_Risk_After, var.equal = TRUE)
+Winter_Con_Risk_T
+
+Spring_Con_Anti_Before <- Spring_Con_Anti %>% select(Before)
+Spring_Con_Anti_After <- Spring_Con_Anti %>% select(After)
+
+Spring_Con_Anti_T <- t.test(Spring_Con_Anti_Before, Spring_Con_Anti_After, var.equal = TRUE)
+Spring_Con_Anti_T
+
+Spring_Prof_Anti_Before <- Spring_Prof_Anti %>% select(Before)
+Spring_Prof_Anti_After <- Spring_Prof_Anti %>% select(After)
+
+Spring_Prof_Anti_T <- t.test(Spring_Prof_Anti_Before, Spring_Prof_Anti_After, var.equal = TRUE)
+Spring_Prof_Anti_T
+
+Winter_Con_Anti_Before <- Winter_Con_Anti %>% select(Before)
+Winter_Con_Anti_After <- Winter_Con_Anti %>% select(After)
+
+Winter_Con_Anti_T <- t.test(Winter_Con_Anti_Before, Winter_Con_Anti_After, var.equal = TRUE)
+Winter_Con_Anti_T
+
+Winter_Prof_Anti_Before <- Winter_Prof_Anti %>% select(Before)
+Winter_Prof_Anti_After <- Winter_Prof_Anti %>% select(After)
+
+Winter_Prof_Anti_T <- t.test(Winter_Prof_Anti_Before, Winter_Prof_Anti_After, var.equal = TRUE)
+Winter_Prof_Anti_T
+
+Spring_CGI_Before <- Spring_CGI %>% select(Before)
+Spring_CGI_After <- Spring_CGI %>% select(After)
+
+Spring_CGI_T <- t.test(Spring_CGI_Before, Spring_CGI_After, var.equal = TRUE)
+Spring_CGI_T
+
+Winter_CGI_Before <- Winter_CGI %>% select(Before)
+Winter_CGI_After <- Winter_CGI %>% select(After)
+
+Winter_CGI_T <- t.test(Winter_CGI_Before, Winter_CGI_After, var.equal = TRUE)
+Winter_CGI_T
+
+Spring_Peds_Before <- Spring_Peds %>% select(Before)
+Spring_Peds_After <- Spring_Peds %>% select(After)
+
+Spring_Peds_T <- t.test(Spring_Peds_Before, Spring_Peds_After, var.equal = TRUE)
+Spring_Peds_T
+
+Winter_Peds_Before <- Winter_Peds %>% select(Before)
+Winter_Peds_After <- Winter_Peds %>% select(After)
+
+Winter_Peds_T <- t.test(Winter_Peds_Before, Winter_Peds_After, var.equal = TRUE)
+Winter_Peds_T
+
+Spring_OBE_Before <- Spring_OBE %>% select(Before)
+Spring_OBE_After <- Spring_OBE %>% select(After)
+
+Spring_OBE_T <- t.test(Spring_OBE_Before, Spring_OBE_After, var.equal = TRUE)
+Spring_OBE_T
+
+Winter_OBE_Before <- Winter_OBE %>% select(Before)
+Winter_OBE_After<- Winter_OBE %>% select(After)
+
+Winter_OBE_T <- t.test(Winter_OBE_Before, Winter_OBE_After, var.equal = TRUE)
+Winter_OBE_T
+
+Spring_Risk_Before <- Spring_Risk %>% select(Before)
+Spring_Risk_After<- Spring_Risk %>% select(After)
+
+Spring_Risk_T <- t.test(Spring_Risk_Before, Spring_Risk_After, var.equal = TRUE)
+Spring_Risk_T
+
+Winter_Risk_Before <- Winter_Risk %>% select(Before)
+Winter_Risk_After<- Winter_Risk %>% select(After)
+
+Winter_Risk_T <- t.test(Winter_Risk_Before, Winter_Risk_After, var.equal = TRUE)
+Winter_Risk_T
+
+Winter_Anti_Before <- Winter_Anti %>% select(Before)
+Winter_Anti_After<- Winter_Anti %>% select(After)
+
+Winter_Anti_T <- t.test(Winter_Anti_Before, Winter_Anti_After, var.equal = TRUE)
+Winter_Anti_T
+
+Spring_Anti_Before <- Spring_Anti %>% select(Before)
+Spring_Anti_After<- Spring_Anti %>% select(After)
+
+Spring_Anti_T <- t.test(Spring_Anti_Before, Spring_Anti_After, var.equal = TRUE)
+Spring_Anti_T
+
+Total_Before <- Total %>% select(Before)
+Total_After<- Total %>% select(After)
+
+Total_T <- t.test(Total_Before, Total_After, var.equal = TRUE)
+Total_T
+
+Prof_Total_Before <- Prof_Total %>% select(Before)
+Prof_Total_After<- Prof_Total %>% select(After)
+
+Prof_Total_T <- t.test(Prof_Total_Before, Prof_Total_After, var.equal = TRUE)
+Prof_Total_T
+
+Spring_Total_Before <- Spring_Total %>% select(Before)
+Spring_Total_After<- Spring_Total %>% select(After)
+
+Spring_Total_T <- t.test(Spring_Total_Before, Spring_Total_After, var.equal = TRUE)
+Spring_Total_T
+
+Winter_Total_Before <- Winter_Total %>% select(Before)
+Winter_Total_After<- Winter_Total %>% select(After)
+
+Winter_Total_T <- t.test(Winter_Total_Before, Winter_Total_After, var.equal = TRUE)
+Winter_Total_T
+
+Con_Total_Before <- Con_Total %>% select(Before)
+Con_Total_After <- Con_Total %>% select(After)
+
+Con_Total_T <- t.test(Con_Total_Before, Con_Total_After, var.equal = TRUE)
+Con_Total_T
+
+```
